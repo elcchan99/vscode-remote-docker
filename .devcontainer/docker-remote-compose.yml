@@ -1,0 +1,21 @@
+version: '3'
+services:
+  python_sample:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # vm-src-path:container-dest-path
+      - /media/sf_sonal/vscode-remote-docker:/workspaces/vscode-remote-docker
+      # vm-path:container-path
+      - /home/edgar/.gitconfig:/root/.gitconfig
+      - /home/edgar/.ssh:/root/.ssh-localhost:ro
+
+    # [Optional] Required for ptrace-based debuggers like C++, Go, and Rust
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"

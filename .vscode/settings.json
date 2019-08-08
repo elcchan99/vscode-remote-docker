@@ -1,0 +1,5 @@
+{
+    // Virtual Box Docker Daemon Connection String
+    // tcp://{vm-ip}:{dockerd-port}
+    "docker.host": "tcp://192.168.18.146:2375"
+}
